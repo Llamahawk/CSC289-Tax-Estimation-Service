@@ -30,12 +30,24 @@ while validated == False:
 
 # calls correct federal tax calculator function based on filing status input
 if filing_status == 1:
-    tax = federal_tax_rate_single(income)
+    FedTax = federal_tax_rate_single(income)
 elif filing_status == 2:
-    tax = federal_tax_rate_married_joint(income)
+    FedTax = federal_tax_rate_married_joint(income)
 elif filing_status == 3:
-    tax = federal_tax_rate_married_separate(income)
+    FedTax = federal_tax_rate_married_separate(income)
 elif filing_status == 4:
-    tax = federal_tax_rate_head(income)
+    FedTax = federal_tax_rate_head(income)
 
-print(f"Federal tax owed: ${tax:.2f}")
+# calls state tax function (flat tax so no bracket filter needed)
+StateTax = state_income_tax(income)
+
+# sum of federal and state tax
+tax = StateTax + FedTax
+
+print("")
+print(f"State tax owed: ${StateTax:.2f}")
+print("---------------------------")
+print(f"Federal tax owed: ${FedTax:.2f}")
+print("---------------------------")
+print(f"Total tax owed: ${tax:.2f}")
+print("")

@@ -112,4 +112,27 @@ def federal_tax_rate_married_separate(annual_income):
 
 # calculates federal income tax for head of household filing status
 def federal_tax_rate_head(annual_income):
-    pass
+    income_tax = 0
+    # Bracket 1
+    if annual_income <= 15700:
+        income_tax = annual_income * 0.10
+    # Bracket 2
+    elif 15701 <= annual_income <= 59850:
+        income_tax = (annual_income - 15700) * 0.12 + 1570
+    # Bracket 3
+    elif 59851 <= annual_income <= 95350:
+        income_tax = (annual_income - 59850) * 0.22 + 6868
+    # Bracket 4
+    elif 95351 <= annual_income <= 182100:
+        income_tax = (annual_income - 95350) * 0.24 + 14678
+    # Bracket 5
+    elif 182101 <= annual_income <= 231250:
+        income_tax = (annual_income - 182100) * 0.32 + 35498
+    # Bracket 6
+    elif 231251 <= annual_income <= 578100:
+        income_tax = (annual_income - 231250) * 0.35 + 51226
+    # Bracket 7
+    elif 578101 <= annual_income:
+        income_tax = (annual_income - 346875) * 0.37 + 172621.50
+
+    return income_tax
