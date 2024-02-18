@@ -4,12 +4,10 @@ pip install Django psycopg2-binary
 #Configure Database settings in the settings.py file of the Django Project
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'databasename',
-        'USER': 'username',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE':'django.db.backends.oracle',
+        'NAME':'scraju_dbhigh',
+        'USER':'admin', 
+        'PASSWORD':'mypw', #Please provide the db password here
     }
 }
 
