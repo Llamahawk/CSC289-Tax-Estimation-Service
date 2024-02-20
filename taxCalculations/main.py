@@ -1,5 +1,5 @@
-from taxCalculator import TaxCalculator
-from filingStatus import FilingStatus
+from tax_calculator import TaxCalculator
+from filing_status import FilingStatus
 from user import User
 
 

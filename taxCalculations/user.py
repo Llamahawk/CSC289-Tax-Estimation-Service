@@ -1,4 +1,4 @@
-from filingStatus import FilingStatus
+from filing_status import FilingStatus
 
 
 class User:
