@@ -18,13 +18,13 @@ class TaxCalculator:
         if self.filing_status == FilingStatus.SINGLE:
             return self.federal_tax_rate_single()
         elif self.filing_status == FilingStatus.MFJ:
-            return self.federal_tax_rate_married_joint()
+            return self.federal_tax_rate_married_joint_or_qw()
         elif self.filing_status == FilingStatus.MFS:
             return self.federal_tax_rate_married_separate()
         elif self.filing_status == FilingStatus.HH:
             return self.federal_tax_rate_head()
         elif self.filing_status == FilingStatus.QW:
-            return self.federal_tax_rate_qualifying_widow()
+            return self.federal_tax_rate_married_joint_or_qw()
 
     def calculate_state_tax(self):
         return self.state_income_tax()
@@ -59,8 +59,8 @@ class TaxCalculator:
         elif 578126 <= self.income:
             return (self.income - 578125) * 0.37 + 174238.25
 
-    # calculates federal income tax for married filing jointly
-    def federal_tax_rate_married_joint(self):
+    # calculates federal income tax for married filing jointly or qualified widow(er)
+    def federal_tax_rate_married_joint_or_qw(self):
         # Bracket 1
         if self.income <= 22000:
             return self.income * 0.10
@@ -107,16 +107,31 @@ class TaxCalculator:
         elif 346876 <= self.income:
             return (self.income - 346875) * 0.37 + 93300
 
+    # calculates federal income tax for head of household filing status
     def federal_tax_rate_head(self):
-        income_tax = 0
-        # ... (rest of the code from federal_tax_rate_head)
+        # Bracket 1
+        if self.income <= 15700:
+            return self.income * 0.10
+        # Bracket 2
+        elif 15701 <= self.income <= 59850:
+            return (self.income - 15700) * 0.12 + 1570
+        # Bracket 3
+        elif 59851 <= self.income <= 95350:
+            return (self.income - 59850) * 0.22 + 6868
+        # Bracket 4
+        elif 95351 <= self.income <= 182100:
+            return (self.income - 95350) * 0.24 + 14678
+        # Bracket 5
+        elif 182101 <= self.income <= 231250:
+            return (self.income - 182100) * 0.32 + 35498
+        # Bracket 6
+        elif 231251 <= self.income <= 578100:
+            return (self.income - 231250) * 0.35 + 51226
+        # Bracket 7
+        elif 578101 <= self.income:
+            return (self.income - 346875) * 0.37 + 172621.50
 
-    def federal_tax_rate_qualifying_widow(self):
-        income_tax = 0
-        # ... (rest of the code from federal_tax_rate_qualifying_widow)
 
-
-# Additional functions from taxFunctions (if needed)
 def login():
     return True
 
