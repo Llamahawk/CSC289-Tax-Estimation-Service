@@ -1,5 +1,6 @@
-#Install required packages for both Django and PostgreSQL adapter
+#Install required packages for both Django and Oracle database adapter
 pip install Django psycopg2-binary
+pip install cx-Oracle
 
 #Configure Database settings in the settings.py file of the Django Project
 DATABASES = {
