@@ -1,10 +1,10 @@
 import json
+
 import bcrypt
 from django.shortcuts import render, redirect
 from django.views import View
-from calculator_project.calculator_app.models.filing_status import FilingStatus
+
 from .models.user import User
-from calculator_project.calculator_app.services.tax_calculator import calculate_taxes
 
 
 class MainView(View):
@@ -30,10 +30,10 @@ class LoginView(View):
             user_data_list = json.load(file)
 
         # Check if user with given email exists
-        user = next((user for user in user_data_list if user['email'] == email), {})
+        user = next((user for user in user_data_list if user['email_address'] == email), {})
 
         try:
-            if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+            if user and bcrypt.checkpw(password.encode('utf-8'), user['hashed_password'].encode('utf-8')):
                 # Authentication successful, redirect to dashboard or another page
                 return redirect('dashboard')
             else:
@@ -79,7 +79,7 @@ class SignUpView(View):
                     'first_name': user_instance.first_name,
                     'last_name': user_instance.last_name,
                     'email_address': user_instance.email_address,
-                    'password': user_instance.password,
+                    'hashed_password': user_instance.hashed_password,
                 })
 
                 # Write the updated data back to the file
@@ -92,42 +92,3 @@ class SignUpView(View):
                 # Handle validation errors
                 return render(request, self.template_name, {'error_message': str(e)})
 
-
-class DashboardView(View):
-    template_name = 'calculator_app/dashboard.html'
-
-    def get(self, request):
-        # Check if the user is authenticated or redirect to login
-        if not request.user.is_authentificated:
-            return redirect('login')
-
-        # Assuming you have a User model, you can get the user instance
-        user_instance = request.user
-
-        # Render the dashboard template with the user instance
-        return render(request, self.template_name, {'user_instance': user_instance})
-
-    def post(self, request):
-        # Handle the tax calculation and update the tax_result variable
-        # Assuming you have a function or method to calculate tax in your tax_calculator.py
-
-        # Get selected filing status from the form
-        filing_status_value = int(request.POST.get('filing_status', 0))
-        filing_status = FilingStatus(filing_status_value)
-        income = float(request.POST.get('income', 0.0))
-
-        # Calculate tax using calculate_taxes function
-        state_tax, fed_tax, total_tax = calculate_taxes(income, filing_status)
-
-        # Get the user instance
-        user_instance = request.user  # Adjust this based on your actual user retrieval logic
-
-        # Render the dashboard template with the user instance and tax result
-        return render(
-            request, self.template_name, {
-                'user_instance': user_instance,
-                'state_tax': state_tax,
-                'fed_tax': fed_tax,
-                'total_tax': total_tax,
-            }
-        )

@@ -5,13 +5,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Add the project's base directory to sys.path
-sys.path.insert(0, BASE_DIR)
-
-# Add the services directory to sys.path
-SERVICES_DIR = os.path.join(BASE_DIR, 'calculator_app', 'services')
-sys.path.insert(0, SERVICES_DIR)
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-1@b0_9ecawgm$6l8uzm^lrn)gxe9$(&jop76#-y7w6h-dk*uhw'
 
@@ -109,7 +102,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
