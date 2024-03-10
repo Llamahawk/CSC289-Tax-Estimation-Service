@@ -1,5 +1,6 @@
 import re
 import bcrypt
+import base64
 
 
 def validate_string_input(value, field_name):
@@ -34,19 +35,25 @@ def validate_password(password):
     return password
 
 
-def hash_password(password):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(validate_password(password).encode('utf-8'), salt)
-    return hashed_password
-
-
 class User:
 
     def __init__(self, first_name, last_name, email_address, password):
         self.first_name = validate_string_input(first_name, "First name")
         self.last_name = validate_string_input(last_name, "Last name")
         self.email_address = validate_email_address(email_address)
-        self.hashed_password = hash_password(password)
+        self.hashed_password = self._hash_password(validate_password(password))
+
+    @staticmethod
+    def _hash_password(password):
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+        return base64.b64encode(hashed_password).decode('utf-8')
 
     def validate_hashed_password(self, entered_password):
-        return bcrypt.checkpw(entered_password.encode('utf-8'), self.hashed_password)
+        entered_password_bytes = entered_password.encode('utf-8')
+        hashed_password_bytes = base64.b64decode(self.hashed_password.encode('utf-8'))
+
+        if bcrypt.checkpw(entered_password_bytes, hashed_password_bytes):
+            return "Valid"
+        else:
+            return "Invalid"

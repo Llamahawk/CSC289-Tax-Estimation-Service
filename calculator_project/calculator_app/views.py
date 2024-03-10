@@ -6,6 +6,10 @@ from django.views import View
 
 from .models.user import User
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class MainView(View):
     template_name = 'calculator_app/main.html'
@@ -45,7 +49,7 @@ class LoginView(View):
 
 
 class SignUpView(View):
-    template_name = 'calculator_app/signup.html'  # Create a signup.html template
+    template_name = 'calculator_app/signup.html'
     user_dictionary = 'user-dictionary.json'
 
     def get(self, request):
@@ -69,7 +73,8 @@ class SignUpView(View):
         # Check if user with the same email already exists
         if any(user['email_address'] == email_address for user in user_data_list):
             return render(request, self.template_name, {
-                'error_message': 'User with this email address already exists. Redirect to login page instead?'})
+                'error_message': 'Email address already in use'
+            })
         else:
             # Validate and save user data
             try:
@@ -87,8 +92,7 @@ class SignUpView(View):
                     json.dump(user_data_list, file)
 
                 # Redirect to a success page or another view
-                return redirect('signup_success')
+                return redirect('../')
             except ValueError as e:
                 # Handle validation errors
                 return render(request, self.template_name, {'error_message': str(e)})
-
