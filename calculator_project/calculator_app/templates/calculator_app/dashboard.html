@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <form method="post" action="dashboard">
+        {% csrf_token %}
+
+        <label for="income">Income:</label>
+        <input type="text" id="income" name="income" placeholder="50000" required pattern="\d+(\.\d{1,2})?">
+        <br>
+
+        <label for="filing_status">Filing Status:</label>
+        <select id="filing_status" name="filing_status" required>
+            <option value="1">Single</option>
+            <option value="2">Married filing joint</option>
+            <option value="3">Married filing separately</option>
+            <option value="4">Head of household</option>
+            <option value="5">Qualified widower</option>
+        </select>
+
+        <input type="submit" value="Calculate My Tax Liability">
+
+    </form>
+
+</body>
+</html>

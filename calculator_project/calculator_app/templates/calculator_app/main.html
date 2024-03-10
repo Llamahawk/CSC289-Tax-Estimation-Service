@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mainStyle.css' %}">
+    <title>Tax Estimation Service for North Carolina</title>
+</head>
+<body>
+    <header>
+        <h1>Tax Estimation Service for North Carolina</h1>
+        <div id="bannerButtons">
+            <a href="{% url 'login' %}"><button id="login">Login</button></a>
+            <a href="{% url 'signup' %}"><button id="signup">Sign-up</button></a>
+        </div>
+    </header>
+</body>
+</html>

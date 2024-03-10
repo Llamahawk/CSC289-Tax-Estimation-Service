@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+    {% if error_message %}
+        <div class="alert alert-danger">
+            <p>"User with this email address already exists. Please sign in"</p>
+            <br>
+            <a href="{% url 'login' %}">Go to Login</a>
+        </div>
+    {% endif %}
+
+
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+
+        <label for="first_name">First name:</label>
+        <input type="text" id="first_name" placeholder="John" required>
+        <br>
+        <label for="last_name">Last name:</label>
+        <input type="text" id="last_name" placeholder="Doe" required>
+        <br>
+        <label for="email_address">Email address:</label>
+        <input type="text" id="email_address" placeholder="john.doe@gmail.com" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Eagle2024$" required>
+        <br>
+        <input type="reset">
+        <input type="submit">
+    </form>
+</body>
+</html>
