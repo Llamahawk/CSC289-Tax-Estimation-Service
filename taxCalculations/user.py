@@ -24,11 +24,11 @@ class User:
         return email
 
     def validate_filing_status(self, status):
-        if not isinstance(status, FilingStatus):
+        if not (0 < status < 6):
             raise ValueError("Invalid filing status.")
         return status
 
-    def validate_numeric_input(value, field_name):
+    def validate_numeric_input(self, value, field_name):
         try:
             return float(value)
         except (ValueError, TypeError):
