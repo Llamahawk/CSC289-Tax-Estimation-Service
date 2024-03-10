@@ -8,7 +8,16 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <form method="post" action="dashboard">
+    <h1>Welcome, {{ user_instance.first_name }} {{ user_instance.last_name }}!</h1>
+
+    {% if result %}
+        <h2>Tax Results</h2>
+        <p>State Tax: ${{ result.0 }}</p>
+        <p>Federal Tax: ${{ result.1 }}</p>
+        <p>Total Tax: ${{ result.2 }}</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'dashboard' %}">
         {% csrf_token %}
 
         <label for="income">Income:</label>

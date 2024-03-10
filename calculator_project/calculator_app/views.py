@@ -8,6 +8,8 @@ from .models.user import User
 
 import logging
 
+from .services.tax_calculator import calculate_taxes
+
 logger = logging.getLogger(__name__)
 
 
@@ -92,7 +94,30 @@ class SignUpView(View):
                     json.dump(user_data_list, file)
 
                 # Redirect to a success page or another view
-                return redirect('../')
+                return redirect('../dashboard')
             except ValueError as e:
                 # Handle validation errors
                 return render(request, self.template_name, {'error_message': str(e)})
+
+
+class DashboardView(View):
+    template_name = 'calculator_app/dashboard.html'
+
+    def get(self, request):
+        # Render the dashboard template with the user instance
+        return render(request, self.template_name)
+
+    def post(self, request):
+        user_instance = request.user
+
+        income = request.POST.get('income')
+        filing_status = request.POST.get('filing_status')
+
+        (state_tax, fed_tax, total_tax) = calculate_taxes(income, filing_status)
+        logger.debug(f"My taxes are {state_tax} {fed_tax} {total_tax}")
+
+        return render(
+            request,
+            self.template_name,
+            {'user_instance': user_instance, 'result': (state_tax, fed_tax, total_tax)}
+        )
