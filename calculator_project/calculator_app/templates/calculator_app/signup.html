@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Sign Up</title>
+</head>
+<body>
+    {% if error_message and error_message == "Email address already in use" %}
+        <p class="error">{{ error_message }}</p>
+        <p>Do you want to <a href="{% url 'login' %}">login instead</a>?</p>
+    {% endif %}
+
+    {% if error_message and error_message != "Email address already in use" %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'signup' %}">
+        {% csrf_token %}
+
+        <label for="first_name">First name:</label>
+        <input type="text" id="first_name" name="first_name" placeholder="John" required>
+        <br>
+        <label for="last_name">Last name:</label>
+        <input type="text" id="last_name" name="last_name" placeholder="Doe" required>
+        <br>
+        <label for="email_address">Email address:</label>
+        <input type="email" id="email_address" name="email_address" placeholder="john@example.com" required>
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Pa$$w0rd" required>
+
+        <br>
+        <input type="reset">
+        <input type="submit">
+    </form>
+</body>
+</html>

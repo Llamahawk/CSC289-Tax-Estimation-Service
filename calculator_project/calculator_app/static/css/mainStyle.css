@@ -1,5 +1,5 @@
 body {
-    background-image: url(blueRidgeMountains.jpg);
+    background-image: url('../images/blueRidgeMountains.jpg');
     color: white;
     margin: 0;
     padding: 0;
@@ -12,7 +12,6 @@ header {
     background-color: #002868;
     position: absolute;
     width: 100%;
-    
 }
 
 button {
