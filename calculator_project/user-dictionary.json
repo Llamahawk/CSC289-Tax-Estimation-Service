@@ -1,14 +1,1 @@
-[
-    {
-        "first_name": "John",
-        "last_name": "Doe",
-        "email_address": "john@example.com",
-        "hashed_password": "hashed_password_1"
-    },
-    {
-        "first_name": "Jane",
-        "last_name": "Smith",
-        "email_address": "jane@example.com",
-        "hashed_password": "hashed_password_2"
-    }
-]
+[{"first_name": "John", "last_name": "Doe", "email_address": "john@example.com", "hashed_password": "hashed_password_1"}, {"first_name": "Jane", "last_name": "Smith", "email_address": "jane@example.com", "hashed_password": "hashed_password_2"}, {"first_name": "Kristina", "last_name": "Markina", "email_address": "kr.markina@gmail.com", "hashed_password": "JDJiJDEyJFE2VTNzV0F5QnQwSEtRamI5Ujg2ci5xNXgzbDdqTENkQWpvSnEvUzZLRktEazY2aG5JdXlp"}, {"first_name": "Archi", "last_name": "Markin", "email_address": "archi@gmail.com", "hashed_password": "JDJiJDEyJE1vSG00MEdUQ3JQZllJZkh0SWMxdy5VbW1zeDFwWnJJRVQ5ZHRTWUg2Snd6QmlITXowNTJP"}, {"first_name": "John", "last_name": "Doe", "email_address": "email@email.com", "hashed_password": "JDJiJDEyJDhkb0NZQXY0UUN0UnhGL1o5anJmYU81LlJ6aG9ZS24xdVhWN0J2azFZOE0xYmN6VHNsb25P"}, {"first_name": "Kool", "last_name": "Poo", "email_address": "poo@kool.com", "hashed_password": "JDJiJDEyJGlzaU1rRnpuL0NqMDY2Y0liZXdIcmVmQ1lsMno1emVlY3loaEhxTkdaNTdKUG8xUlZsMVIy"}, {"first_name": "Kool", "last_name": "Poo", "email_address": "poo4@kool.com", "hashed_password": "JDJiJDEyJHg2dWVWUDdJTW1LMjhiclEwOXFWZi5sdjNKQjBCTkhrSUhkR203dmhqRktxUDFNNlRrSlNX"}, {"first_name": "Kool", "last_name": "Loop", "email_address": "lopp@kool.com", "hashed_password": "JDJiJDEyJEhuWm5sTWNHeWpIRzQ4V3JnZzBIVC5IUHM5dlN2UnZrdGxIc0ZKRk1ESVExa0JlRlZxNmFT"}, {"first_name": "Kool", "last_name": "Loop", "email_address": "lop8p@kool.com", "hashed_password": "JDJiJDEyJEhURmxSNUdldkRrZGVlb1U5d1hSQ2UyRVI4ZDhvS1BrQ3VpS25LelNBa0w5SEpBVjcwTU15"}, {"first_name": "Kristina", "last_name": "GoodEmailGoodPassword", "email_address": "good@email.com", "hashed_password": "JDJiJDEyJDZ0NlNlSHNva2cvRUtYOXJ0dG9wMS5ka3RkVHpVblliYkYvUGh1WmtYM2IxZjZUV2R3cTlL"}]

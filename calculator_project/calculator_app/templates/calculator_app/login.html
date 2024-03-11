@@ -10,12 +10,23 @@
 <body>
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
+        {% if error_message and error_message != "No user found"%}
+            <p>{{ error_message }}</p>
+            <p>{{ "There should be redirect to \"forgot password\" form" }}</p>
+        {% endif %}
+
+        {% if error_message and error_message == "No user found"%}
+            <p>{{ error_message }}</p>
+            <p>Do you want to <a href="{% url 'signup' %}">signup instead</a>?</p>
+        {% endif %}
+
+
 
         <label for="email_address">Email address:</label>
-        <input type="text" id="email_address" placeholder="PanthersFan9!" required>
+        <input type="email" id="email_address" name="email_address" placeholder="good@email.com" required>
         <br>
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Eagle2024$" required>
+        <input type="password" id="password" name="password" placeholder="Pa$$w0rd" required>
         <br>
         <input type="reset">
         <input type="submit" value="Login">
