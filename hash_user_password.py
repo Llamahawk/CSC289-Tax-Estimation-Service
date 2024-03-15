@@ -25,3 +25,19 @@ class Hashuser:
 hashuser = Hashuser("userfirstname", "userlastname", "userusername", "userpassword", "user1@gmail.com")
 hashuser.save_in_user()
 print(user)
+
+class Hash_and_check:
+    def __init__(self, user_password):
+        self.user_password = input("Enter the password ")
+
+    def hash_user_password(self):
+        user_password = hash(self.user_password)
+        print(user_password)
+        if user["password"] == user_password:
+            print("access granted!")
+
+        else:
+            print("username and password do not mach!")
+
+userp = Hash_and_check("userpassword")
+userp.hash_user_password()
