@@ -1,4 +1,4 @@
-from calculator_project.calculator_app.models.filing_status import FilingStatus
+from calculator_app.models.filing_status import FilingStatus
 
 
 def validate_numeric_input(value):
