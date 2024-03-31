@@ -27,9 +27,14 @@ def calculate_taxes(income, filing_status):
     # Validate filing status
     filing_status = validate_filing_status(filing_status)
 
-    def calculate_state_income_tax():
-        rate = 0.0475
-        return round(income * rate, 2)
+    def federal_standard_deduction():
+        return (
+            13850 if filing_status in (FilingStatus.SINGLE, FilingStatus.MFS)
+            else 27700 if filing_status in (FilingStatus.MFJ, FilingStatus.QW)
+            else 20800  # for HOH
+        )
+
+    income_after_federal_deduction = max(0, income - federal_standard_deduction())
 
     def calculate_federal_income_tax():
         return round(
@@ -43,80 +48,115 @@ def calculate_taxes(income, filing_status):
     def federal_tax_rate_single():
         return (
             # Bracket 1
-            income * 0.10 if income <= 11000
+            income_after_federal_deduction * 0.10 if income_after_federal_deduction <= 11000
             # Bracket 2
-            else (income - 11000) * 0.12 + 1100 if 11001 <= income <= 44725
+            else (
+                             income_after_federal_deduction - 11000) * 0.12 + 1100 if 11001 <= income_after_federal_deduction <= 44725
             # Bracket 3
-            else (income - 44725) * 0.22 + 5147 if 44726 <= income <= 95375
+            else (
+                             income_after_federal_deduction - 44725) * 0.22 + 5147 if 44726 <= income_after_federal_deduction <= 95375
             # Bracket 4
-            else (income - 95375) * 0.24 + 16290 if 95376 <= income <= 182100
+            else (
+                             income_after_federal_deduction - 95375) * 0.24 + 16290 if 95376 <= income_after_federal_deduction <= 182100
             # Bracket 5
-            else (income - 182100) * 0.32 + 37104 if 182101 <= income <= 231250
+            else (
+                             income_after_federal_deduction - 182100) * 0.32 + 37104 if 182101 <= income_after_federal_deduction <= 231250
             # Bracket 6
-            else (income - 231250) * 0.35 + 52832 if 231251 <= income <= 578125
+            else (
+                             income_after_federal_deduction - 231250) * 0.35 + 52832 if 231251 <= income_after_federal_deduction <= 578125
             # Bracket 7
-            else (income - 578125) * 0.37 + 174238.25
+            else (income_after_federal_deduction - 578125) * 0.37 + 174238.25
         )
 
     # calculates federal income tax for head of household filing status
     def federal_tax_rate_head():
         return (
             # Bracket 1
-            income * 0.10 if income <= 15700
+            income_after_federal_deduction * 0.10 if income_after_federal_deduction <= 15700
             # Bracket 2
-            else (income - 15700) * 0.12 + 1570 if 15701 <= income <= 59850
+            else (
+                             income_after_federal_deduction - 15700) * 0.12 + 1570 if 15701 <= income_after_federal_deduction <= 59850
             # Bracket 3
-            else (income - 59850) * 0.22 + 6868 if 59851 <= income <= 95350
+            else (
+                             income_after_federal_deduction - 59850) * 0.22 + 6868 if 59851 <= income_after_federal_deduction <= 95350
             # Bracket 4
-            else (income - 95350) * 0.24 + 14678 if 95351 <= income <= 182100
+            else (
+                             income_after_federal_deduction - 95350) * 0.24 + 14678 if 95351 <= income_after_federal_deduction <= 182100
             # Bracket 5
-            else (income - 182100) * 0.32 + 35498 if 182101 <= income <= 231250
+            else (
+                             income_after_federal_deduction - 182100) * 0.32 + 35498 if 182101 <= income_after_federal_deduction <= 231250
             # Bracket 6
-            else (income - 231250) * 0.35 + 51226 if 231251 <= income <= 578100
+            else (
+                             income_after_federal_deduction - 231250) * 0.35 + 51226 if 231251 <= income_after_federal_deduction <= 578100
             # Bracket 7
-            else (income - 578100) * 0.37 + 172621.50
+            else (income_after_federal_deduction - 578100) * 0.37 + 172621.50
         )
 
     # calculates federal income tax for married filing separately
     def federal_tax_rate_married_separate():
         return (
             # Bracket 1
-            income * 0.10 if income <= 11000
+            income_after_federal_deduction * 0.10 if income_after_federal_deduction <= 11000
             # Bracket 2
-            else (income - 11000) * 0.12 + 1100 if 11001 <= income <= 44725
+            else (
+                             income_after_federal_deduction - 11000) * 0.12 + 1100 if 11001 <= income_after_federal_deduction <= 44725
             # Bracket 3
-            else (income - 44725) * 0.22 + 5147 if 44726 <= income <= 95375
+            else (
+                             income_after_federal_deduction - 44725) * 0.22 + 5147 if 44726 <= income_after_federal_deduction <= 95375
             # Bracket 4
-            else (income - 95375) * 0.24 + 16290 if 95376 <= income <= 182100
+            else (
+                             income_after_federal_deduction - 95375) * 0.24 + 16290 if 95376 <= income_after_federal_deduction <= 182100
             # Bracket 5
-            else (income - 182100) * 0.32 + 37104 if 182101 <= income <= 231250
+            else (
+                             income_after_federal_deduction - 182100) * 0.32 + 37104 if 182101 <= income_after_federal_deduction <= 231250
             # Bracket 6
-            else (income - 231250) * 0.35 + 52832 if 231251 <= income <= 346875
+            else (
+                             income_after_federal_deduction - 231250) * 0.35 + 52832 if 231251 <= income_after_federal_deduction <= 346875
             # Bracket 7
-            else (income - 346875) * 0.37 + 93300
+            else (income_after_federal_deduction - 346875) * 0.37 + 93300
         )
 
     # calculates federal income tax for married filing jointly or qualified widow(er)
     def federal_tax_rate_married_joint_or_qw():
         return (
             # Bracket 1
-            income * 0.10 if income <= 22000
+            income_after_federal_deduction * 0.10 if income_after_federal_deduction <= 22000
             # Bracket 2
-            else (income - 22000) * 0.12 + 2200 if 22001 <= income <= 89450
+            else (
+                             income_after_federal_deduction - 22000) * 0.12 + 2200 if 22001 <= income_after_federal_deduction <= 89450
             # Bracket 3
-            else (income - 89450) * 0.22 + 10294 if 89451 <= income <= 190750
+            else (
+                             income_after_federal_deduction - 89450) * 0.22 + 10294 if 89451 <= income_after_federal_deduction <= 190750
             # Bracket 4
-            else (income - 190750) * 0.24 + 32596.50 if 190751 <= income <= 364200
+            else (
+                             income_after_federal_deduction - 190750) * 0.24 + 32596.50 if 190751 <= income_after_federal_deduction <= 364200
             # Bracket 5
-            else (income - 364200) * 0.32 + 74224.50 if 364201 <= income <= 462500
+            else (
+                             income_after_federal_deduction - 364200) * 0.32 + 74224.50 if 364201 <= income_after_federal_deduction <= 462500
             # Bracket 6
-            else (income - 462500) * 0.35 + 105680.50 if 462501 <= income <= 693750
+            else (
+                             income_after_federal_deduction - 462500) * 0.35 + 105680.50 if 462501 <= income_after_federal_deduction <= 693750
             # Bracket 7
-            else (income - 693750) * 0.37 + 186618
+            else (income_after_federal_deduction - 693750) * 0.37 + 186618
         )
 
-    state_tax = calculate_state_income_tax()
     federal_tax = calculate_federal_income_tax()
+
+    def nc_standard_deduction():
+        return (
+            12750 if filing_status in (FilingStatus.SINGLE, FilingStatus.MFS)
+            else 25500 if filing_status in (FilingStatus.MFJ, FilingStatus.QW)
+            else 19125  # for HOH
+        )
+
+    income_after_both_deductions = max(0, income_after_federal_deduction - nc_standard_deduction())
+
+    def calculate_state_income_tax():
+        rate = 0.0475
+        return round(income_after_both_deductions * rate)
+
+    state_tax = calculate_state_income_tax()
+
     total_tax = round(state_tax + federal_tax, 2)
 
     return state_tax, federal_tax, total_tax
