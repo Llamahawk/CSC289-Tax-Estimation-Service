@@ -1,170 +1,119 @@
-# CSC289-Tax-Estimation-Service
+<h1>CSC289-Tax-Estimation-Service</h1>
 Github repository for our tax estimation service class project.
 
-Tax Estimation Service <br>
+<h2>Tax Estimation Service</h2> <br>
 This project provides a simple Tax Estimation Service that calculates state and federal income taxes based on user input. Follow the instructions below to set up and run the project on your local machine.
-<br> Prerequisites <br>
-Make sure you have the following tools installed on your machine:
 
-<br> Python (3.6 or higher)
-<br> Pip
-<br> Django
-<br> Pytest
-<br>
-<br>
-Clone the Repository <br>
+<br> **Prerequisites:**<br>
+
+<ul>
+<br> <li>Python (3.6 or higher)</li>
+<br> <li>Pip</li>
+<br> <li>Django</li>
+<br> <li>Pytest</li>
+</ul>
+
+<br>**Clone the Repository**<br>
 <code>git clone https://github.com/Llamahawk/CSC289-Tax-Estimation-Service.git <br>
 </code>
 <code>cd CSC289-Tax-Estimation-Service/calculator_project
 </code>
 
-<br> Set Up Virtual Environment <br>
+<br> **Set Up Virtual Environment** <br>
 <code>python -m venv venv</code>
 or
 <code>python3 -m venv venv</code>
 
-<br>Activate Virtual Environment<br>
-On Windows: <code>venv\Scripts\activate</code>
+<br>**Activate Virtual Environment**<br>
+On Windows: <code>venv\Scripts\activate</code><br>
 On macOS/Linux: <code>source venv/bin/activate</code>
 
-<br>Install Dependencies<br>
+<br>**Install Dependencies**<br>
 <code>pip install -r requirements.txt</code>
 or
 <code>pip3 install -r requirements.txt</code>
 
-<br>Run migrations<br>
+<br>**Run migrations**<br>
 <code>python manage.py migrate</code>
 or
 <code>python3 manage.py migrate</code>
 
 
-<br>Run the Development Server<br>
+<br>**Run the Development Server**<br>
 <code>python manage.py runserver</code>
 or
 <code>python3 manage.py runserver</code>
 
-Visit http://127.0.0.1:8000 in your web browser to access the application.
+Visit  in your web browser to access the application.
 
-<br>Running Tests<br>
+<br>**Running Tests**<br>
+This command will run both unittests and pytests.<br>
 <code>python -m pytest</code>
-This command will run both unittests and pytests.
 
 
-**If you need to add html / css files**
 
-To customize the appearance of the Tax Estimation Service, you can modify the HTML and CSS files in the "templates" and "static" directories, respectively.
-
-**Adding HTML Files**
-Create New HTML Files:
-
-Navigate to the calculator_app/templates directory.
-Create new HTML files for your desired pages (e.g., custom_page.html).
-Extend Base Template (Optional):
-
-If you want to use a common structure across multiple pages, consider extending the base template.
-In your HTML file, use the {% extends 'base.html' %} tag at the top.
-Include CSS Files (Optional):
-
-Include CSS files within the HTML file using the {% load static %} and {% static 'css/style.css' %} tags.
-
-**Adding CSS Files**
-Create New CSS Files:
-
-Navigate to the calculator_app/static/css directory.
-Create new CSS files for styling (e.g., custom_style.css).
-Link CSS Files in HTML:
-
-In your HTML file, link the CSS files using the <link> tag.
-Example: <link rel="stylesheet" href="{% static 'css/custom_style.css' %}">
-Apply Styling:
-
-Write your custom styles in the CSS files to modify the appearance of the HTML elements.
-Run the Development Server:
-
-After making changes, run the development server (python manage.py runserver) to see the updated pages.
-
-***Adding Automated Tests***
-
-To ensure the reliability and correctness of the Tax Estimation Service, you can add automated tests using unittest and pytest.
-
-**Using Unittest**
-Create Test Files:
-
-Navigate to the calculator_app/tests directory.
-Create new Python files for your tests (e.g., test_calculator.py).
-Write Test Cases:
-
-In the test file, import the unittest module.
-Define test cases by creating classes that inherit from unittest.TestCase.
-Write test methods within these classes.
-Run Unittests:
-
-Open a terminal and run the following command:
-<code> python -m unittest discover calculator_app.tests </code>
-or
-<code> python3 -m unittest discover calculator_app.tests </code>
-Ensure that your tests pass without errors.
-
-**Using Pytest**
-
-Install Pytest:
-
-If you haven't installed pytest, run the following command:
-
-<code>pip install pytest</code>
-or
-
-<code>pip3 install pytest</code>
-
-Create Test Files:
-
-Similar to Unittest, create Python files for your tests (e.g., test_calculator.py).
-Write Test Cases:
-
-In the test file, write test functions using the def test_... syntax.
-Run Pytests:
-
-Open a terminal and run the following command:
-<code>pytest calculator_app/tests</code>
-
-Verify that your tests pass successfully.
-Coverage (Optional):
-
-To check test coverage, install the coverage tool:
-<code>pip install coverage</code>
-or
-<code>pip3 install coverage</code>
-
-Run the tests with coverage:
-<code>coverage run -m pytest calculator_app/tests</code>
-
-View the coverage report:
-<code>coverage report -m</code>
-![coverage_report](screenshots/coverage_report.png)
-
-****Writing Front-End Tests****
-
-If you want to write tests for front-end components, especially those involving POST requests, you can use tools like Selenium or Cypress. Here's a basic guide using Selenium:
-
-Using Selenium for Front-End Tests
-
-Install Selenium:
-
-Ensure you have Selenium installed. You can install it using:
-<code>pip install selenium</code>
-or
-<code>pip3 install selenium</code>
-
-Download WebDriver:
-
-Download the appropriate WebDriver for your browser (e.g., ChromeDriver, GeckoDriver).
-Place the WebDriver executable in a directory included in your system's PATH.
-Write Selenium Tests:
-
-Create a new Python file for your Selenium tests (e.g., test_frontend.py).
-Use the webdriver module from Selenium to simulate user interactions.
-Write test cases that involve interacting with elements, submitting forms, and verifying results.
-Example:
+<h3>If you need to add html / css files:</h3>
+<ol>
+    <li>To customize the appearance of the Tax Estimation Service:</li>
+        <ul>
+            <li>Adding HTML Files:</li>
+                <ul>
+                    <li>Navigate to the 'calculator_app/templates' directory.</li>
+                    <li>Create new HTML files for your desired pages(e.g., 'custom_page.html')</li>
+                    <li>Optional: Extend base template by using '{% extends 'base.html' %}' tag in your HTML file.</li>
+                    <li>Optional: Include CSS files within the HTML file using '{% load static %}' and '{% static 'css/style.css' %}' tags</li>
+                </ul>
+            <li>Adding CSS Files</li>
+                <ul>
+                    <li>Navigate to 'calculator_app/static/css' directory.</li>
+                    <li>Create new CSS files for styling (e.g., 'custom_style.css').</li>
+                    <li>Link CSS files in HTML files using the link tag.</li>
+                    <li>Write your custom styles in the CSS files to modify the appearance of the HTML elements.</li>
+                </ul>
+            <li>Run the Development Server:</li>
+                <ul>
+                    <li>After making changes, run the development server ('python manage.py runserver') to see the updated pages.</li>
+                </ul>
+        </ul>
+</ol>
+<br>
+<h3>Adding Automated Tests</h3>
+<ol>
+    <li>Using Unittest:</li>
+        <ul>
+            <li>Create test files in 'calculator_app/tests' directory.</li>
+            <li>Write test cases using 'unittest' module.</li>
+            <li>Run unittests:<br> <code>python -m unittest discover calculator_app.tests</code> 
+                <br> or <br> 
+                <code>python3 -m unittest discover calculator_app.tests</code></li>
+        </ul>
+    <li>Using Pytest:</li>
+        <ul>
+            <li>Install pytest if not already installed: <br>
+            <code>pip install pytest</code>
+            <br> or <br>
+            <code>pip3 install pytest</code></li>
+            <li>Write test files and test cases.</li>
+            <li>Run Pytests:<br>
+            <code>pytest calculator_app/tests</code></li>
+            <li>Optional: Check test coverage using coverage tool.</li>
+            <li>Run the tests with coverage:<br>
+                <code>coverage run -m pytest calculator_app/tests</code></li>
+            <li>View coverage report:<br>
+            <code>coverage report -m</code></li>
+        </ul><br>
+<h3>Writing Front-End Tests</h3>
+    <ol>
+        <li>Using Selenium for Front-End Tests:
+            <ul>
+                <li>Ensure Selenium is installed:<br>
+                <code>pip install selenium</code><br>
+                or<br>
+                <code>pip3 install selenium</code></li>
+                <li>Download and place appropriate WebDriver in your system's PATH.<br>
+                <li>Write Selenium tests simulating user interactions.</li>
+            </ul>
+    </ol>
 
 ```{python}
     from selenium import webdriver
@@ -185,22 +134,21 @@ Example:
         unittest.main()`
 ```
 
-Run Selenium Tests:
+<h3>Run Selenium Tests</h3>
 
-Execute your Selenium tests using a command similar to:
-```python -m unittest test_frontend.py```
-or
-```python3 -m unittest test_frontend.py```
+<ol>
+    <li>Run your Selenium tests using this command:<br>
+        <code>python -m unittest test_frontend.py</code>
+        <br>or<br>
+        <code>python3 -m unittest test_frontend.py</code>
+    </li>
+    <li>Ensure that the Django development server is running while running the tests.</li>
+    <li>Optional: Consider integrating Selenium tests into your continuous integration (CI) pipeline for automated testing. Note that Selenium tests simulate real user         interactions with your application, so make sure your application is running during the tests. Adjust the URLs and test scenarios according to your specific front-end      components and functionality.</li>
+</ol>
 
-Make sure the Django development server is running during the tests.
-Continuous Integration (Optional):
 
-Consider integrating Selenium tests into your continuous integration (CI) pipeline for automated testing.
-Note:
-Selenium tests interact with your application as if a real user would. Ensure your application is running during the tests.
-Adjust the URLs and test scenarios based on your specific front-end components and functionality.
+<h3>Deploying Django Project to GitHub Pages</h3>
 
-***Deploying Django Project to GitHub Pages***
 ```
 
 Deploying a Django project to GitHub Pages isn't a straightforward task, as GitHub Pages is designed primarily for static websites, and Django is a full-stack web framework. However, you can host the static part of your project, such as HTML, CSS, and JavaScript files, on GitHub Pages, while deploying the Django backend separately. Here's a basic guide:
@@ -280,7 +228,7 @@ GitHub Pages is suitable for static content, while the Django backend needs a se
 This guide focuses on deploying the front-end to GitHub Pages and the Django backend to Heroku. Adjust the steps based on your preferred hosting services.
 ```
 url: http://127.0.0.1:8000/calculator_app/ <br>
-input: choose and action and click the button (POST) <br>
+input: choose an action and click the button (POST) <br>
 expected result: redirects to 'login' or 'signup' <br>
 ![main_page.png](screenshots/main_page.png) <br>
 
