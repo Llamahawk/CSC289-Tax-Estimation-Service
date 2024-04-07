@@ -8,10 +8,10 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome, {{ user_instance.first_name }} {{ user_instance.last_name }}!</h1>
+    <h1>Welcome to the North Carolina Tax Estimation Service!</h1>
 
     {% if result %}
-        <h2>Tax Results</h2>
+        <h2>Your Tax Results</h2>
         <p>State Tax: ${{ result.0 }}</p>
         <p>Federal Tax: ${{ result.1 }}</p>
         <p>Total Tax: ${{ result.2 }}</p>
