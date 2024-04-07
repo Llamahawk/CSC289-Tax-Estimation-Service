@@ -35,3 +35,10 @@ h1 {
 #bannerButtons {
     margin: 2%;
 }
+
+#summary {
+    text-align: center;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+    font-size: 40px;
+    padding-top: 200px;
+}

@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+    background-image: url('../images/blueRidgeMountains.jpg');
+    color: white;
 }
 
 form {
@@ -23,7 +24,8 @@ label {
 
 input[type="text"],
 input[type="number"],
-input[type="password"] {
+input[type="password"],
+input[type="email"]{
     width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 16px;
@@ -34,7 +36,8 @@ input[type="password"] {
 
 input[type="text"]:hover,
 input[type="number"]:hover,
-input[type="password"]:hover {
+input[type="password"]:hover,
+input[type="email"]:hover{
     border-color: #999; /* Changing border color on hover */
 }
 
@@ -71,4 +74,15 @@ input[type="reset"]:hover {
 
 input[type="reset"]:focus {
     outline: none;
+}
+
+#header {
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#results {
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bold;
 }

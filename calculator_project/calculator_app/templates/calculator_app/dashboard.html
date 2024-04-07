@@ -8,14 +8,17 @@
     <title>Dashboard</title>
 </head>
 <body>
+<div id="header">
     <h1>Welcome to the North Carolina Tax Estimation Service!</h1>
-
+</div>
+<div id="results">
     {% if result %}
         <h2>Your Tax Results</h2>
-        <p>State Tax: ${{ result.0 }}</p>
-        <p>Federal Tax: ${{ result.1 }}</p>
-        <p>Total Tax: ${{ result.2 }}</p>
+        <p>State Tax: ${{ result.0|floatformat:2 }}</p>
+        <p>Federal Tax: ${{ result.1|floatformat:2 }}</p>
+        <p>Total Tax: ${{ result.2|floatformat:2 }}</p>
     {% endif %}
+</div>
 
     <form method="post" action="{% url 'dashboard' %}">
         {% csrf_token %}
