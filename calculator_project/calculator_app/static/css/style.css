@@ -7,6 +7,7 @@ body {
 }
 
 form {
+    color: black;
     max-width: 400px;
     margin: 50px auto;
     background: #fff;
@@ -85,7 +86,4 @@ input[type="reset"]:focus {
     text-align: center;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-weight: bold;
-}
-#passrules {
-    color: black
 }
