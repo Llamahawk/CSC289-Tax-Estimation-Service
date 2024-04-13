@@ -11,7 +11,7 @@ sys.path.insert(0, BASE_DIR)
 SECRET_KEY = 'django-insecure-1@b0_9ecawgm$6l8uzm^lrn)gxe9$(&jop76#-y7w6h-dk*uhw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 LOGGING = {
     'version': 1,
