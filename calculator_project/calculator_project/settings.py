@@ -27,7 +27,7 @@ LOGGING = {
     },
 }
 
-ALLOWED_HOSTS = ['https://tax-estimation-service-0833bdfda483.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
