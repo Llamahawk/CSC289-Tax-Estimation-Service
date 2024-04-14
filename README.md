@@ -44,7 +44,7 @@ or
 or
 <code>python3 manage.py runserver</code>
 
-Visit  in your web browser to access the application.
+Visit http://127.0.0.1:8000/calculator_app/ in your web browser to access the application.
 
 <br>**Running Tests**<br>
 This command will run both unittests and pytests.<br>
